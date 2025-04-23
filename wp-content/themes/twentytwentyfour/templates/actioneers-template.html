@@ -1,0 +1,28 @@
+<div id="app" class="country-list-container">
+    <div class="controls">
+        <select v-model="sortKey">
+            <option value="country">Sort By: Country</option>
+            <option value="capital">Sort By: Capital</option>
+        </select>
+
+        <select v-model="sortOrder">
+            <option value="asc">Direction: Asc</option>
+            <option value="desc">Direction: Desc</option>
+        </select>
+    </div>
+
+    <div class="country-list">
+        <div class="country-item" v-for="(item, index) in paginatedCountries" :key="index">
+            {{ item.country }}, {{ item.capital }}
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">Previous</button>
+
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+
+        <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Next</button>
+    </div>
+
+</div>
